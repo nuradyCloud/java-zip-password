@@ -17,8 +17,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 
-import static utils.security.decryptedFile;
-import static utils.security.encryptedFile;
+import static utils.security.*;
 
 /**
  * @author xcloud7 on 06/09/23,14.03
@@ -36,21 +35,24 @@ public class ZipFileEnDec {
             zipParameters.setAesKeyStrength(AesKeyStrength.KEY_STRENGTH_256);
 
             ArrayList<File> filesToAdd = new ArrayList<File>();
-            String secretKey = "H!B4nk";
+//            String secretKey = "H!B4nk";
+            String secretKey = "1234567890asdfghjklmnopqrstupxyz";
             String saltKey = "ayomaju";
             String secretKeyZip = "kambinghitam";
 
             System.out.println("File input: " + "sample_file/cobaan.xlsx");
 
             //encryptedFile
-            encryptedFile(secretKey, saltKey, "sample_file/cobaan.xlsx", "sample_file/cobaan.enc");
+            encryptedFile(secretKey,"sample_file/Microsite-20230826-00-48.xlsx", "sample_file/Microsite-20230826-00-48.enc");
+//            encryptedFileWithIv(secretKey, saltKey, "sample_file/cobaan.xlsx", "sample_file/cobaan.enc");
 
             //decryptedFile
-            decryptedFile(secretKey, saltKey,"sample_file/cobaan.enc", "sample_file/cobaan-decrypt.xlsx");
+            decryptedFile(secretKey,"sample_file/Microsite-20230826-00-48.enc", "sample_file/Microsite-20230826-00-48-decrypt.xlsx");
+//            decryptedFileWithIv(secretKey, saltKey,"sample_file/cobaan.enc", "sample_file/cobaan-decrypt.xlsx");
 
-            filesToAdd.add(new File("sample_file/cobaan.xlsx"));
-            filesToAdd.add(new File("sample_file/cobaan.enc"));
-            filesToAdd.add(new File("sample_file/cobaan-decrypt.xlsx"));
+            filesToAdd.add(new File("sample_file/Microsite-20230826-00-48.xlsx"));
+            filesToAdd.add(new File("sample_file/Microsite-20230826-00-48.enc"));
+            filesToAdd.add(new File("sample_file/Microsite-20230826-00-48-decrypt.xlsx"));
 
             String destinationZipFilePath = "sample_file/myZip_pass.zip";
             ZipFile zipFile = new ZipFile(destinationZipFilePath,secretKeyZip.toCharArray());
