@@ -35,50 +35,51 @@ public class ZipFileEnDec {
             zipParameters.setAesKeyStrength(AesKeyStrength.KEY_STRENGTH_256);
 
             ArrayList<File> filesToAdd = new ArrayList<File>();
-//            String secretKey = "H!B4nk";
             String secretKey = "1234567890asdfghjklmnopqrstupxyz";
             String saltKey = "ayomaju";
             String secretKeyZip = "kambinghitam";
 
-            System.out.println("File input: " + "sample_file/cobaan.xlsx");
+            System.out.println("File input: " + "sample_file/Microsite-20230826-00-46.csv");
 
             //encryptedFile
-            encryptedFile(secretKey,"sample_file/Microsite-20230826-00-48.xlsx", "sample_file/Microsite-20230826-00-48.enc");
+//            encryptedFile(secretKey,"sample_file/Microsite-20230826-00-46.csv", "sample_file/Microsite-20230826-00-46_encrypt.csv");
+            encryptedFileWithRandomIv(secretKey,"sample_file/Microsite-20230826-00-46.csv", "sample_file/Microsite-20230826-00-46_encrypt.csv");
 //            encryptedFileWithIv(secretKey, saltKey, "sample_file/cobaan.xlsx", "sample_file/cobaan.enc");
 
             //decryptedFile
-            decryptedFile(secretKey,"sample_file/Microsite-20230826-00-48.enc", "sample_file/Microsite-20230826-00-48-decrypt.xlsx");
+//            decryptedFile(secretKey,"sample_file/Microsite-20230925-14-25.csv", "sample_file/Microsite-20230925-14-25_decrypt.csv");
+            decryptedFileWithRandomIv(secretKey,"sample_file/Microsite-20230826-00-46_encrypt.csv", "sample_file/Microsite-20230826-00-46_decrypted.csv");
 //            decryptedFileWithIv(secretKey, saltKey,"sample_file/cobaan.enc", "sample_file/cobaan-decrypt.xlsx");
 
-            filesToAdd.add(new File("sample_file/Microsite-20230826-00-48.xlsx"));
-            filesToAdd.add(new File("sample_file/Microsite-20230826-00-48.enc"));
-            filesToAdd.add(new File("sample_file/Microsite-20230826-00-48-decrypt.xlsx"));
-
-            String destinationZipFilePath = "sample_file/myZip_pass.zip";
-            ZipFile zipFile = new ZipFile(destinationZipFilePath,secretKeyZip.toCharArray());
-            zipFile.addFiles(filesToAdd, zipParameters);
-
-            System.out.println("Password protected Zip file"
-                    + "have been created at "  + destinationZipFilePath);
+//            filesToAdd.add(new File("sample_file/Microsite-20230826-00-48.xlsx"));
+//            filesToAdd.add(new File("sample_file/Microsite-20230826-00-48.enc"));
+//            filesToAdd.add(new File("sample_file/Microsite-20230826-00-48-decrypt.xlsx"));
+//
+//            String destinationZipFilePath = "sample_file/myZip_pass.zip";
+//            ZipFile zipFile = new ZipFile(destinationZipFilePath,secretKeyZip.toCharArray());
+//            zipFile.addFiles(filesToAdd, zipParameters);
+//
+//            System.out.println("Password protected Zip file"
+//                    + "have been created at "  + destinationZipFilePath);
 
         } catch (ZipException e) {
             e.printStackTrace();
         } catch (NoSuchPaddingException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (IllegalBlockSizeException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (BadPaddingException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (InvalidKeyException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (InvalidAlgorithmParameterException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (InvalidKeySpecException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }
