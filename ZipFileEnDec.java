@@ -43,12 +43,13 @@ public class ZipFileEnDec {
 
             //encryptedFile
 //            encryptedFile(secretKey,"sample_file/Microsite-20230826-00-46.csv", "sample_file/Microsite-20230826-00-46_encrypt.csv");
-            encryptedFileWithRandomIv(secretKey,"sample_file/Microsite-20230826-00-46.csv", "sample_file/Microsite-20230826-00-46_encrypt.csv");
+            encryptedFileWithRandomIv(secretKey,"sample_file/Microsite-20230826-00-46.csv", "sample_file/Microsite-20230826-00-46_encrypted.csv");
 //            encryptedFileWithIv(secretKey, saltKey, "sample_file/cobaan.xlsx", "sample_file/cobaan.enc");
 
             //decryptedFile
 //            decryptedFile(secretKey,"sample_file/Microsite-20230925-14-25.csv", "sample_file/Microsite-20230925-14-25_decrypt.csv");
-            decryptedFileWithRandomIv(secretKey,"sample_file/Microsite-20230826-00-46_encrypt.csv", "sample_file/Microsite-20230826-00-46_decrypted.csv");
+            decryptCSVFile(secretKey,"sample_file/Microsite-20230826-00-46_encrypted.csv","sample_file/Microsite-20230826-00-46_decrypted.csv");
+//            decryptedFileWithRandomIv(secretKey,"sample_file/Microsite-20231002-23-35_encrypted.csv", "sample_file/Microsite-20231002-23-35_decrypted.csv");
 //            decryptedFileWithIv(secretKey, saltKey,"sample_file/cobaan.enc", "sample_file/cobaan-decrypt.xlsx");
 
 //            filesToAdd.add(new File("sample_file/Microsite-20230826-00-48.xlsx"));
@@ -80,6 +81,8 @@ public class ZipFileEnDec {
             e.printStackTrace();
         } catch (InvalidKeySpecException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }
